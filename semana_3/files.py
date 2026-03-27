@@ -145,5 +145,3 @@ def load_CSV(route):
         
     print(f'We omitted {error_rows} rows that contained an error')
     print(f'Action: {action}')
-    
-load_CSV('semana_3\db.csv')
