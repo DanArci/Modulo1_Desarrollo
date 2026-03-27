@@ -87,11 +87,11 @@ def calculate_statistics(inventory):
     print(f"\nThe total sold on the day was: {total_cost}\nThe total number of products sold on the day was: {total_quantity}\n{most_expensive_product_msg}\n{product_largest_quantity_msg}")
 
 
-add_product()
-add_product()
-show_inventory()
-print('-'*20)
-calculate_statistics(inventory)
+# add_product()
+# add_product()
+# show_inventory()
+# print('-'*20)
+# calculate_statistics(inventory)
 
 
 #FALTAN LOS COMENTARIOS Y DOCSTRINGS
