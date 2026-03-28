@@ -1,9 +1,3 @@
-inventory = []
-products = {
-    "name": str,
-    "price": float,
-    "quantity": int
-}
 subtotal = (lambda p: p["price"] * p["quantity"])
 
 def userInput(msg,type,errorMsg):
@@ -37,36 +31,39 @@ def userInput(msg,type,errorMsg):
             print(errorMsg)
             continue
 
-def add_product():
+def add_product(inventory):
     name = userInput("Enter the product name: ","word","Punctuation marks, spaces, or numbers are not allowed. Please re-enter the product name: ").upper()
     price = userInput("Enter the product price: ","float","Special characters, spaces, or letters are not allowed. Please re-enter the product price: ")
     quantity = userInput(f"Add the desired amount of {name}: ","int",f"No symbols, spaces, or letters are allowed. Please re-enter the quantity of {name} you will be taking: ")
     product = {"name": name, "price": price, "quantity": quantity}
     inventory.append(product.copy())
     print("\nSaved successfully")
+    return inventory
 
-def show_inventory():
+def show_inventory(inventory):
+    print('-'*70)
     for i in range(len(inventory)):
         total_cost = subtotal(inventory[i])
         print(f"Product: {inventory[i]['name']} | price: {inventory[i]['price']} | quantity: {inventory[i]['quantity']} | Total: {total_cost}")
+    print('-'*70)
 
 def search_product(inventory, name):
     for i in range(len(inventory)):
         names = list(inventory[i].values())
-        if names[0] == name:
+        if names[0] == name.upper().strip():
             print(f'Product: {names[0]} | price: {names[1]} | quantity: {names[2]} ')
 
 def update_product(inventory, name, new_price=None, new_quantity=None):
     for i in range(len(inventory)):
         names = list(inventory[i].values())
-        if names[0] == name:
+        if names[0] == name.upper().strip():
             inventory[i]['price'] = new_price
             inventory[i]['quantity'] = new_quantity
 
 def remove_product(inventory, name):
     for i in range(len(inventory)):
         names = list(inventory[i].values())
-        if names[0] == name:
+        if names[0] == name.upper().strip():
             inventory.pop(i)
             break
 
